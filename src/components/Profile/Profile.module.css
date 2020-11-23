@@ -18,6 +18,9 @@
     font-size: 25px;
     margin-bottom: 40px;
 }
+.info a{
+    text-decoration: none;
+}
 .posts{
     margin-left: 7%;
 }

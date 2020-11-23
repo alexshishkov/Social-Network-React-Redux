@@ -1,5 +1,8 @@
-a {
+.nav a{
     text-decoration: none;
     width: 700px;
     margin-right: 40px;
+}
+.nav a:hover, .nav a:focus, .nav a:active {
+    opacity: .75;
 }
