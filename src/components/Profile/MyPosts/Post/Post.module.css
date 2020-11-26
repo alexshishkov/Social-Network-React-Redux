@@ -1,0 +1,14 @@
+.post{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.post img{
+    width: 60px;
+    height: 60px;
+    border-radius: 100px
+}
+.post p{
+    margin-left: 20px;
+    font-size: 30px;
+}

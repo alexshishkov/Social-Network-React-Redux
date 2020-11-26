@@ -1,0 +1,23 @@
+.posts{
+    margin-left: 7%;
+}
+.posts p{
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+.posts textarea{
+    background: rgb(244,244,244);
+    font-size: 25px;
+    height: 70px;
+    width: 50%;
+}
+.posts button{
+    background: rgb(244,244,245);
+    border-radius: 3px;
+    height: 40px;
+    width: 120px;
+    font-size: 25px;
+    text-align: left;
+    margin-left: 45%;
+    margin-top: 20px;
+}
