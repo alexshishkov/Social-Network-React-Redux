@@ -6,7 +6,9 @@
 .post img{
     width: 60px;
     height: 60px;
-    border-radius: 100px
+    border-radius: 100px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 .post p{
     margin-left: 20px;

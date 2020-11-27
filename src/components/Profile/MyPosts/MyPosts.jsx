@@ -6,9 +6,10 @@ const MyPosts = () => {
     return (
         <div className={c.posts}>
             <p>My post</p>
-            <textarea></textarea>
+            <input/>
             <button>Send</button>
-           <Post/>
+            <Post messages = 'Hi how are you?' like = '3'/>
+            <Post messages = 'Hi' like = '2'/>
         </div>)
     };
 
