@@ -1,0 +1,24 @@
+.wrapper{
+    display: flex;
+}
+.dialogs ul{
+    margin: 0;
+    border-right: solid 3px;
+    border-color: rgb(182,182,182);
+    padding-right: 30px;
+    margin-left: 40px;
+}
+.dialogs li{
+    margin-bottom: 30px;
+}
+.messages{
+    margin-left: 40px;
+}
+.messages p{
+    margin-bottom: 30px;
+    margin-top: 0;
+    border: solid 3px;
+    border-color: rgb(182,182,182);
+    border-radius: 15px;
+    padding: 5px;
+}
