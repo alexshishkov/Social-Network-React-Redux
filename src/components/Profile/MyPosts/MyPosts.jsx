@@ -1,15 +1,24 @@
 import c from "./MyPosts.module.css";
 import React from "react";
 import Post from "./Post/Post";
+import {createRef} from "react/cjs/react.production.min";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+
+    let MessagesElement = props.state.map((m) => <Post messages = {m.messages} like = {m.like}/>);
+
+    let AddPost = () => {
+        alert(NewPostElement.current.value);
+    };
+
+    let NewPostElement = createRef();
+
     return (
         <div className={c.posts}>
             <p>My post</p>
-            <input/>
-            <button>Send</button>
-            <Post messages = 'Hi how are you?' like = '3'/>
-            <Post messages = 'Hi' like = '2'/>
+            <textarea ref={NewPostElement}></textarea>
+            <button onClick={AddPost}>Add Post</button>
+            {MessagesElement}
         </div>)
     };
 

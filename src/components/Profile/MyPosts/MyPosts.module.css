@@ -5,7 +5,7 @@
     font-size: 40px;
     margin-bottom: 30px;
 }
-.posts input{
+.posts textarea{
     background: rgb(244,244,244);
     height: 70px;
     width: 50%;
