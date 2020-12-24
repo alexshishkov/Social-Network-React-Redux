@@ -22,3 +22,8 @@
     border-radius: 15px;
     padding: 5px;
 }
+.text textarea{
+    background: rgb(244,244,244);
+    height: 40px;
+    width: 100%;
+}
