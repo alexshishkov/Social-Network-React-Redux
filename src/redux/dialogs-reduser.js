@@ -11,19 +11,22 @@ let initialState = {
         {message: 'Hi', id: '1'},
         {message: 'How are you?', id: '2'}
     ],
-    newMessagesText: 'vfesczf'
+    newMessagesText: ''
 };
 
 const dialogsReduser = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGES:
-            let newMessages = {id:'3', message: state.newMessagesText};
-            state.Messages.push(newMessages);
-            state.newMessagesText ='';
-            return state;
+            return {
+                ...state,
+                newMessagesText: '',
+                Messages: [...state.Messages, {id:'3', message: state.newMessagesText}],
+            };
         case UPDATE_NEW_MESSAGES_TEXT:
-            state.newMessagesText = action.newBody;
-            return state;
+            return {
+                ...state,
+                newMessagesText: action.newBody
+            };
         default:
             return state;
     }

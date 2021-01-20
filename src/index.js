@@ -2,25 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import state from './redux/state'
 import store from "./redux/redux-store";
-import reportWebVitals from "./reportWebVitals";
 import {BrowserRouter} from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
+import {Provider} from "react-redux/es/alternate-renderers";
 
-export let rerenderEntireTree = (state) => {
-    ReactDOM.render (
-            <BrowserRouter>
-                <App state={state} dispatch = {store.dispatch.bind(store)} store={store} />
-            </BrowserRouter>, document.getElementById ('root'));
-};
+ReactDOM.render(
+    <React.StrictMode>
+      <BrowserRouter>
+          <Provider store={store}>
+            <App/>
+          </Provider>
+      </BrowserRouter>
+  </React.StrictMode>, document.getElementById('root'));
 
-rerenderEntireTree = (state.getState());
-
-state.subscribe( () => {
-    let state = state.getState();
-    rerenderEntireTree(state)
-});
 
 
 

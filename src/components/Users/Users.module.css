@@ -1,0 +1,45 @@
+.wrapper{
+    display: flex;
+    margin-bottom: 20px;
+}
+.user_wrapper_ava{
+    margin-left: 30px;
+}
+.user_wrapper_ava img {
+    width: 130px;
+    height: 130px;
+    border-radius: 35%;
+}
+.button{
+    width: 120px;
+}
+.user_wrapper_content{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 100px;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 50%;
+}
+.name{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-size: 40px;
+}
+.status{
+    margin-top: 50px;
+    margin-left: 10px;
+    font-size: 30px;
+}
+.user_content p{
+    margin-left: 110px;
+    font-size: 30px;
+}
+.country{
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+.city{
+    margin-top: 10px;
+}

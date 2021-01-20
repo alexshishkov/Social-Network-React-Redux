@@ -7,6 +7,7 @@ const Nav = () => {
         <div className={c.nav}>
                 <NavLink to="/profile">Profile</NavLink>
                 <NavLink to="/dialogs">Messages</NavLink>
+                <NavLink to="/users">Users</NavLink>
                 <NavLink to="/news">News</NavLink>
                 <NavLink to="/musik">Music</NavLink>
                 <NavLink to="/setting">Setting</NavLink>

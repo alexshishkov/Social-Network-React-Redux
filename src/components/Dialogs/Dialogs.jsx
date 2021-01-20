@@ -3,23 +3,21 @@ import c from './dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import {createRef} from "react/cjs/react.production.min";
-import {sendMessagesActionCreater, updateNewMessagesTextActionCreater} from "../../redux/dialogs-reduser";
 
 const Dialogs = (props) => {
+    let DialogsElement = props.state.dialog.Dialogs.map((d) => <li><Dialog name = {d.name} key = {d.id} id = {d.id} /></li> );
 
-    let DialogsElement = props.state.Dialogs.map((d) => <li><Dialog name = {d.name} id = {d.id} /></li> );
-
-    let MessagesElement = props.state.Messages.map((m) => <Message message ={m.message}/>);
+    let MessagesElement = props.state.dialog.Messages.map((m) => <Message message ={m.message}/>);
 
     let NewDialogElement = createRef();
 
     let AddMessages = () => {
-        props.dispatch(sendMessagesActionCreater());
+        props.sendMessages()
     };
 
     let onMessagesChange = () => {
         let body = NewDialogElement.current.value;
-        props.dispatch(updateNewMessagesTextActionCreater(body))
+        props.updateNewMessagesBody(body);
     };
 
     return(
@@ -32,7 +30,7 @@ const Dialogs = (props) => {
             <div className={c.messages}>
                 {MessagesElement}
                 <div className={c.text}>
-                    <textarea placeholder='Enter your message' ref={NewDialogElement} onChange={onMessagesChange} value={props.state.newMessagesText}/>
+                    <textarea placeholder='Enter your message' ref={NewDialogElement} onChange={onMessagesChange} value={props.newMessagesText}/>
                     <button onClick={AddMessages}>Send</button>
                 </div>
             </div>
