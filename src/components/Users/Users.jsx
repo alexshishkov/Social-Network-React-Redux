@@ -5,13 +5,34 @@ import user_photo from '../../images_user.png'
 
 class Users extends React.Component {
     componentDidMount() {
-            axios.get ('https://social-network.samuraijs.com/api/1.0/users').then( response => {
-                this.props.setUsers(response.data.items)
+            axios.get (`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}& count =${this.props.pageSize}`).then( response => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUserCount(response.data.totalCount);
             });
         }
+    onPageChanged = (p) => {
+        this.props.setPage(p);
+        axios.get (`https://social-network.samuraijs.com/api/1.0/users?page=${p}& count = ${this.props.pageSize}`).then( response => {
+            this.props.setUsers(response.data.items);
+        });};
+
+
     render() {
+
+        let pagesCount = Math.ceil(this.props.count / this.props.pageSize);
+
+        let pages = [];
+        for (let i=1; i <= pagesCount; i++ ){
+            pages.push(i);
+        }
+
         return (
             <div>
+                <div>
+                    {pages.map(p => {
+                        return <span onClick={() => {this.onPageChanged(p)}} className={this.props.page === p && c.selectedPage}>{p}</span>})
+                    }
+                </div>
                 {this.props.users.map(u => <div key={u.id}>
                     <div className={c.wrapper}>
                         <div className={c.user_wrapper_ava}>

@@ -2,6 +2,9 @@
     display: flex;
     margin-bottom: 20px;
 }
+.selectedPage{
+    font-weight: bold;
+}
 .user_wrapper_ava{
     margin-left: 30px;
 }
