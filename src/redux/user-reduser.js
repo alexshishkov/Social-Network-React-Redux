@@ -3,12 +3,14 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_PAGE = 'SET_PAGE';
+const TOOGLE_IS_FETHING = 'TOOGLE_IS_FETHING';
 
 let initialState = {
     users: [],
     pageSize: 5,
     userCount: 0,
-    page: 2
+    page: 1,
+    isFething: false
 };
 
 const userReduser = (state = initialState, action) => {
@@ -39,32 +41,38 @@ const userReduser = (state = initialState, action) => {
             return {...state, users: action.users}
         }
         case SET_PAGE:{
-            return {...state, page: [action.page]}
+            return {...state, page: action.page}
         }
         case SET_TOTAL_COUNT:{
             return {...state, userCount: [action.totalCount]}
+        }
+        case TOOGLE_IS_FETHING:{
+            return {...state, isFething: action.isFething}
         }
         default:
             return state;
     }
 };
 
-export const followAC = (userId) => {
+export const follow = (userId) => {
     return {type: FOLLOW, userId}
 };
 
-export const unfollowsAC = (userId) => {
+export const unfollow = (userId) => {
     return {type: UNFOLLOW, userId}
 };
 
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
     return {type: SET_USERS, users}
 };
-export const setpagesAC = (page) => {
+export const setPages = (page) => {
     return {type: SET_PAGE, page}
 };
-export const setTotalUserCountAC = (totalCount) => {
+export const setTotalUserCount = (totalCount) => {
     return {type: SET_TOTAL_COUNT, totalCount}
+};
+export const setIsFething = (isFething) => {
+    return {type: TOOGLE_IS_FETHING, isFething}
 };
 
 
