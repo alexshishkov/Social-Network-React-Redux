@@ -5,7 +5,7 @@ import {createRef} from "react/cjs/react.production.min";
 
 const MyPosts = (props) => {
 
-    let MessagesElement = props.state.profile.post.map((m) => <Post messages = {m.messages} like = {m.like}/>);
+    let MessagesElement = props.state.profile.post.map((m) => <Post profile ={props.profile} messages = {m.messages} like = {m.like}/>);
 
     let NewPostElement = createRef();
 

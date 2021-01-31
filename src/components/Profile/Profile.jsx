@@ -7,8 +7,8 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 const Profile = (props) => {
     return (
         <div className={c.profile}>
-            <ProfileInfo />
-            <MyPostsContainer store={props.store} />
+            <ProfileInfo profile = {props.profile}/>
+            <MyPostsContainer store={props.store} profile = {props.profile} />
         </div>
     )
 };

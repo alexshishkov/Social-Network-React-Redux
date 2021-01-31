@@ -3,7 +3,7 @@ import {sendMessagesActionCreater, updateNewMessagesTextActionCreater} from "../
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state) => {debugger
+const mapStateToProps = (state) => {
     return {
         newMessagesText: state.dialog.newMessagesText,
         state: state

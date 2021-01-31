@@ -52,31 +52,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-/*const mapDispatchToProps = (dispatch) =>{
-    return {
-        follow: (userId) =>{
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) =>{
-            dispatch(unfollowsAC(userId))
-        },
-        setUsers: (users) =>{
-            dispatch(setUsersAC(users))
-        },
-        setPage: (page) =>{
-            dispatch(setpagesAC(page))
-        },
-        setTotalUserCount: (totalCount) =>{
-            dispatch(setTotalUserCountAC(totalCount))
-        },
-        setIsFething: (isFething) =>{
-            dispatch(setIsFethingAC(isFething))
-        }
-
-
-    }
-};*/
-
 const usersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
