@@ -7,7 +7,7 @@ const Post = (props) => {
     if (!props.profile){
         return <Preloader/>
     }
-    return (    
+    return (
         <div className={c.post}>
             <img src={props.profile.photos.small} alt="post ava"/>
             <div>

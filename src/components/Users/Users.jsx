@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 let Users = (props) =>{
 
     let pagesCount = Math.ceil(props.count / props.pageSize);
-
+    
     let pages = [];
 
     for (let i=1; i <= pagesCount; i++ ){
@@ -16,7 +16,7 @@ let Users = (props) =>{
     return (
         <div>
             <div className={c.pages}>
-                {pages.slice(0, 10).map(p => {
+                {pages.slice(0, 30).map(p => {
                     return <span className={c.onePage}><span onClick={() => {props.onPageChanged(p)}} className={props.page === p && c.selectedPage}>{p}</span></span>})
                 }
             </div>
