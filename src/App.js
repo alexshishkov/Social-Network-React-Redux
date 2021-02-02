@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header/Header";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 function App (props) {
@@ -12,7 +12,7 @@ function App (props) {
             <div className="App">
                 <div className='wrapper'>
                     <header>
-                        <Header/>
+                        <HeaderContainer/>
                     </header>
                     <body>
                     <div>
