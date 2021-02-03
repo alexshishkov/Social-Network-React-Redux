@@ -9,30 +9,24 @@ import {
     setUsers,
     unfollow
 } from "../../redux/user-reduser";
-import * as axios from "axios";
 import Preloader from "../Common/Preloader/Preloader";
+import {getUser} from "../../api/api";
 
 class UsersC extends React.Component {
     componentDidMount() {
         this.props.setIsFething(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}& count =${this.props.pageSize}`,
-            {
-                withCredentials: true
-            }).then( response => {
+        getUser(this.props.page, this.props.pageSize).then( data => {
             this.props.setIsFething(false);
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUserCount(response.data.totalCount);
+            this.props.setUsers(data.items);
+            this.props.setTotalUserCount(data.totalCount);
         });
     }
     onPageChanged = (p) => {
         this.props.setIsFething(true);
         this.props.setPages(p);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}& count = ${this.props.pageSize}`,
-            {
-                withCredentials: true
-            }).then( response => {
+        getUser(p, this.props.pageSize).then( data => {
             this.props.setIsFething(false);
-            this.props.setUsers(response.data.items);
+            this.props.setUsers(data.items);
         });};
 
     render() {
