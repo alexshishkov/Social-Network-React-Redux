@@ -16,7 +16,7 @@ function App (props) {
                     </header>
                     <body>
                     <div>
-                        <Route path='/profile/:userId' render={() => <ProfileContainer store = {props.store} />}/>
+                        <Route path='/profile/:userId?' render={() => <ProfileContainer store = {props.store} />}/>
                         <Route path='/dialogs' render={() => <DialogsContainer store ={props.store} />}/>
                         <Route path='/users' render={() => <UsersContainer store = {props.store} />}/>
                     </div>

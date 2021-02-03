@@ -15,7 +15,10 @@ import Preloader from "../Common/Preloader/Preloader";
 class UsersC extends React.Component {
     componentDidMount() {
         this.props.setIsFething(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}& count =${this.props.pageSize}`).then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.page}& count =${this.props.pageSize}`,
+            {
+                withCredentials: true
+            }).then( response => {
             this.props.setIsFething(false);
             this.props.setUsers(response.data.items);
             this.props.setTotalUserCount(response.data.totalCount);
@@ -24,7 +27,10 @@ class UsersC extends React.Component {
     onPageChanged = (p) => {
         this.props.setIsFething(true);
         this.props.setPages(p);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}& count = ${this.props.pageSize}`).then( response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}& count = ${this.props.pageSize}`,
+            {
+                withCredentials: true
+            }).then( response => {
             this.props.setIsFething(false);
             this.props.setUsers(response.data.items);
         });};
