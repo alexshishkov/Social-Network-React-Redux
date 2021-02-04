@@ -4,13 +4,15 @@ const SET_USERS = 'SET_USERS';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_PAGE = 'SET_PAGE';
 const TOOGLE_IS_FETHING = 'TOOGLE_IS_FETHING';
+const TOOGLE_IS_FOLlOwING_PROGRESS = 'TOOGLE_IS_FOLlOwING_PROGRESS';
 
 let initialState = {
     users: [],
     pageSize: 5,
     userCount: 0,
     page: 1,
-    isFething: false
+    isFething: false,
+    followingIsProgress: []
 };
 
 const userReduser = (state = initialState, action) => {
@@ -49,6 +51,11 @@ const userReduser = (state = initialState, action) => {
         case TOOGLE_IS_FETHING:{
             return {...state, isFething: action.isFething}
         }
+        case TOOGLE_IS_FOLlOwING_PROGRESS:{
+            return {...state, followingIsProgress: action.isFething
+                    ? [...state.followingIsProgress, action.userId]
+                    : state.followingIsProgress.filter(id => id != action.userId)}
+        }
         default:
             return state;
     }
@@ -73,6 +80,9 @@ export const setTotalUserCount = (totalCount) => {
 };
 export const setIsFething = (isFething) => {
     return {type: TOOGLE_IS_FETHING, isFething}
+};
+export const toogleFollowingProgress = (isFething, userId) => {
+    return {type: TOOGLE_IS_FOLlOwING_PROGRESS, isFething, userId}
 };
 
 

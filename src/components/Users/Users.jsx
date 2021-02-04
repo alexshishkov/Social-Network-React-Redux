@@ -29,7 +29,8 @@ let Users = (props) =>{
                         </NavLink>
                         <div>
                             {u.followed
-                                ? <button className={c.button} onClick ={ () => {
+                                ? <button disabled={props.followingIsProgress.some(id => id == u.id)} className={c.button} onClick ={ () => {
+                                    props.toogleFollowingProgress(true, u.id);
                                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
                                         withCredentials: true,
                                         headers: {
@@ -39,10 +40,12 @@ let Users = (props) =>{
                                         if (response.data.resultCode == 0) {
                                             props.unfollow(u.id);
                                         }
+                                        props.toogleFollowingProgress(false, u.id);
                                     });
                                     }}>Unfollow</button>
 
-                                : <button className={c.button} onClick ={ () => {
+                                : <button disabled={props.followingIsProgress.some(id => id == u.id)} className={c.button} onClick ={ () => {
+                                    props.toogleFollowingProgress(true, u.id);
                                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
                                         withCredentials: true,
                                         headers: {
@@ -52,6 +55,7 @@ let Users = (props) =>{
                                         if (response.data.resultCode == 0) {
                                             props.follow(u.id);
                                         }
+                                        props.toogleFollowingProgress(false, u.id);
                                     });
                                     }}>Follow</button>}
                         </div>
