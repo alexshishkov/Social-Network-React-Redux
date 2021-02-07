@@ -2,33 +2,22 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    follow,
-    setIsFething,
+    follow, getUsers,
     setPages,
-    setTotalUserCount,
-    setUsers,
     toogleFollowingProgress,
     unfollow
 } from "../../redux/user-reduser";
 import Preloader from "../Common/Preloader/Preloader";
-import {getUser} from "../../api/api";
 
 class UsersC extends React.Component {
+
     componentDidMount() {
-        this.props.setIsFething(true);
-        getUser(this.props.page, this.props.pageSize).then( data => {
-            this.props.setIsFething(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUserCount(data.totalCount);
-        });
-    }
+        this.props.getUsers(this.props.page, this.props.pageSize);
+    };
+
     onPageChanged = (p) => {
-        this.props.setIsFething(true);
-        this.props.setPages(p);
-        getUser(p, this.props.pageSize).then( data => {
-            this.props.setIsFething(false);
-            this.props.setUsers(data.items);
-        });};
+        this.props.getUsers(p, this.props.pageSize);
+    };
 
     render() {
         return <> {this.props.isFething ? <Preloader /> : null}
@@ -60,11 +49,9 @@ const mapStateToProps = (state) => {
 const usersContainer = connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setPages,
-    setTotalUserCount,
-    setIsFething,
-    toogleFollowingProgress
+    toogleFollowingProgress,
+    getUsers
 })(UsersC);
 
 export default usersContainer;
