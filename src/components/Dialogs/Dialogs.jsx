@@ -3,6 +3,7 @@ import c from './dialogs.module.css'
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
 import {createRef} from "react/cjs/react.production.min";
+import {Redirect} from "react-router-dom";
 
 const Dialogs = (props) => {
     let DialogsElement = props.state.dialog.Dialogs.map((d) => <li><Dialog name = {d.name} key = {d.id} id = {d.id} /></li> );
@@ -19,6 +20,8 @@ const Dialogs = (props) => {
         let body = NewDialogElement.current.value;
         props.updateNewMessagesBody(body);
     };
+
+    if (!props.isAuth) return <Redirect to = '/login'/>;
 
     return(
         <div className={c.wrapper}>
