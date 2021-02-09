@@ -8,6 +8,7 @@ import {
     unfollow
 } from "../../redux/user-reduser";
 import Preloader from "../Common/Preloader/Preloader";
+import withAuthRedirect from "../../hoc/WithAuthRedirect";
 
 class UsersC extends React.Component {
 
@@ -46,12 +47,5 @@ const mapStateToProps = (state) => {
     }
 };
 
-const usersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setPages,
-    toogleFollowingProgress,
-    getUsers
-})(UsersC);
-
-export default usersContainer;
+export default withAuthRedirect (connect(mapStateToProps, {follow, unfollow,
+    setPages, toogleFollowingProgress, getUsers})(UsersC));
