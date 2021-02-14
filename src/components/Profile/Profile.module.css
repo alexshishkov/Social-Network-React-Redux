@@ -18,6 +18,9 @@
 .info a{
     text-decoration: none;
 }
+.wrap__status{
+    margin-top: 40px;
+}
 .status{
     width: 200px;
     height: 30px;
@@ -27,6 +30,7 @@
 
 }
 .statusInput{
+    padding: 0;
     display: inline;
     width: 200px;
     height: 30px;
