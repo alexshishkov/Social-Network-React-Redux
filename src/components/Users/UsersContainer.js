@@ -2,22 +2,30 @@ import React from "react";
 import {connect} from "react-redux";
 import Users from "./Users";
 import {
-    follow, getUsers,
+    follow, requestUsers,
     setPages,
     toogleFollowingProgress,
     unfollow
 } from "../../redux/user-reduser";
 import Preloader from "../Common/Preloader/Preloader";
 import withAuthRedirect from "../../hoc/WithAuthRedirect";
+import {
+    getFollowingIsProgress,
+    getIsFething,
+    getPage,
+    getPageSize,
+    getUserCont,
+    getUsers
+} from "../../redux/user-selectors";
 
 class UsersC extends React.Component {
 
     componentDidMount() {
-        this.props.getUsers(this.props.page, this.props.pageSize);
+        this.props.requestUsers(this.props.page, this.props.pageSize);
     };
 
     onPageChanged = (p) => {
-        this.props.getUsers(p, this.props.pageSize);
+        this.props.requestUsers(p, this.props.pageSize);
     };
 
     render() {
@@ -38,14 +46,14 @@ class UsersC extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.users.users,
-        pageSize: state.users.pageSize,
-        count: state.users.userCount,
-        page: state.users.page,
-        isFething: state.users.isFething,
-        followingIsProgress: state.users.followingIsProgress
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        count: getUserCont(state),
+        page: getPage(state),
+        isFething: getIsFething(state),
+        followingIsProgress: getFollowingIsProgress(state)
     }
 };
 
 export default withAuthRedirect (connect(mapStateToProps, {follow, unfollow,
-    setPages, toogleFollowingProgress, getUsers})(UsersC));
+    setPages, toogleFollowingProgress, requestUsers})(UsersC));

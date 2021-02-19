@@ -86,9 +86,10 @@ export const toogleFollowingProgress = (isFething, userId) => {
     return {type: TOOGLE_IS_FOLlOwING_PROGRESS, isFething, userId}
 };
 
-export const getUsers = (page, pageSize) => {
+export const requestUsers = (page, pageSize) => {
     return (dispatch) => {
         dispatch(setIsFething(true));
+        dispatch(setPages(page));
         userApi.getUser(page, pageSize).then(data => {
             dispatch(setIsFething(false));
             dispatch(setUsers(data.items));
