@@ -14,8 +14,7 @@ import {
     getIsFething,
     getPage,
     getPageSize,
-    getUserCont,
-    getUsers
+    getUserCont, getUsers,
 } from "../../redux/user-selectors";
 
 class UsersC extends React.Component {
