@@ -1,9 +1,12 @@
 import {profileAPI, UsersAPI} from "../api/api";
+import {takeEvery, put, call} from "redux-saga/effects";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USERS_PROFILE = 'SET_USERS_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const REQUEST = 'REQUEST';
+const REQUESTSTATUS = 'REQUESTSTATUS';
 
 let initialState = {
     post: [
@@ -52,21 +55,44 @@ export const addPostActionCreater = () => {
 export const updateNewPostTextActionCreater = (text) => {
     return {type: UPDATE_NEW_POST_TEXT, newText: text}
 };
-export const setUserProfile = (profile) => ({type: SET_USERS_PROFILE, profile});
+export const setUserProfile = (profile) => {
+    return {type: SET_USERS_PROFILE, profile}
+};
 
 export const setStatus = (status) => ({type: SET_STATUS, status});
 
+/*
 export const getUserProfile = (userId) => (dispatch) => {
     UsersAPI.getProfile(userId).then(response => {
         dispatch(setUserProfile(response.data));
     });
 };
+ */
 
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId).then(response => {
-        dispatch(setStatus(response.data));
-    });
+export const profileGet = (UserId) => {
+    return {type: REQUEST, UserId}};
+
+export function* saga() {
+    yield takeEvery(REQUEST, sagaWorker);
+}
+
+export function* sagaWorker(action) {
+    const result = yield call(UsersAPI.getProfile, action.UserId);
+    yield put(setUserProfile(result.data));
+}
+
+export const getStatus = (userId) =>{
+    return {type: REQUESTSTATUS, userId};
 };
+
+export function* sagaStatus() {
+    yield takeEvery(REQUESTSTATUS, sagaWorkerStatus);
+}
+
+export function* sagaWorkerStatus(action) {
+    const result = yield call(profileAPI.getStatus, action.UserId);
+    yield put(setStatus(result.UserId));
+}
 
 export const updateStatus = (status) => (dispatch) => {
     profileAPI.updateStatus(status).then(response => {

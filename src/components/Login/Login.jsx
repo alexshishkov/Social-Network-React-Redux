@@ -22,9 +22,7 @@ let LoginForm = (props) => {
 const LoginReduxForm = reduxForm({form:'login'}) (LoginForm);
 
 const Login = () => {
-    const onSubmit =(formData) =>{
-        console.log(formData)
-    };
+    const onSubmit =(formData) =>{};
     return (
         <div className={c.wrap}>
             <h1 className={c.logo}>LOGIN</h1>
